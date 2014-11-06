@@ -7,7 +7,6 @@ using BuildStuffFeedback.Providers;
 using BuildStuffFeedback.ViewModels;
 using Nancy;
 using Nancy.Bootstrapper;
-using Nancy.Responses;
 using Nancy.Security;
 
 namespace BuildStuffFeedback.Modules
@@ -41,7 +40,6 @@ namespace BuildStuffFeedback.Modules
                         new GetSessions(() => _provider.GetAllSessions().Select(session => new SessionSummary
                         {
                             Id = session.Id,
-                            SessionId = session.SessionId,
                             Speaker = session.Speaker,
                             Title = session.Title
                         })));
@@ -54,7 +52,6 @@ namespace BuildStuffFeedback.Modules
                             return new SessionDetail
                             {
                                 Id = session.Id,
-                                SessionId = session.SessionId,
                                 Speaker = session.Speaker,
                                 Title = session.Title,
                                 Email = session.Email,
