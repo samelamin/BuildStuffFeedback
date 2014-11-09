@@ -96,6 +96,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Admin\AdminSessionsView.cshtml" />
     <Content Include="Views\Admin\SessionDetail.cshtml" />
+    <Content Include="Views\Home\Sessions.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

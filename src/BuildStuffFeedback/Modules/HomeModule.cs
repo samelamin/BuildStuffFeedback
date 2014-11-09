@@ -23,7 +23,8 @@ namespace BuildStuffFeedback.Modules
 
             Get["/sessions"] = parameters =>
             {
-                return Response.AsRedirect("/");
+                var sessions = _sessionProvider.GetAllSessions();
+                return View["Sessions.cshtml", sessions];
             };
 
             Get["/ThankYou"] = parameters =>
