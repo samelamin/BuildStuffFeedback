@@ -12,5 +12,9 @@ namespace BuildStuffFeedback.Models
         public int Rating { get; set; }
 
         public String Comments { get; set; }
+
+        public String Email { get; set; }
+
+        public String FullName { get; set; }
     }
 }

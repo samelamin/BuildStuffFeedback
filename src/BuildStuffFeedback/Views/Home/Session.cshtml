@@ -30,7 +30,7 @@
 
                     .feedback-form {
                         width: 100%;
-                        padding: 10%;
+                        padding: 5%;
                     }
 
                     .feedback-form label {
@@ -85,35 +85,57 @@
         <section id="hero" style="background-image: url('http://buildstuff.lt/wp-content/uploads/2014/04/Fonas224.jpg');">
             <div class="container">
                 <h1>Build Stuff 2014</h1>
-                <p>Software Development conference</p>
+                <h2>Software Development conference</h2>
                 @if (@Model.Speaker != @Model.Title)
                 {
-                    <span>@Model.Speaker: @Model.Title</span>
+                    <p>@Model.Speaker: @Model.Title</p>
                 }
                 else
                 {
-                    <span> @Model.Title</span>
+                    <p> @Model.Title</p>
                 }
+
                 
                 <form action="/sessions/AddFeedback" method="post" class="feedback-form">
                     <input name="SessionId" type="text" value="@Model.Id" hidden="true" />
-                    
-                    <label class="red">
-                        <input type="radio" name="Rating" id="radio1" class="radio" value="1" />
-                    </label>
-                    <label class="yellow">
-                        <input type="radio" name="Rating" id="radio2" value="2" class="radio" />
-                    </label>
-                    <label class="green">
-                        <input type="radio" name="Rating" id="radio3" value="3" class="radio" checked />
-                    </label>
-     
-                    <textarea rows="4" cols="50" name="Comments" placeholder="Any Further Comments"></textarea>
-                    <br/>
-                    <div id="schedule-sessions">
-                        <input id="submit-button" class="btn btn-more main-bkg-color" type="submit" title="Submit" />
-                    </div>
-                </form>
+                    <span>
+                        Get in a raffle and win valuable prices including Build Stuff jumpers and free software classes! 
+                    </span>
+                    <br />
+                    <span>
+                        Want to join? Don't forget to evaluate speaker and his session on this app.
+                    </span>
+                    <br />
+                    <span>
+                       Raffle stars on 21st of November in Alfa hall at 17:00.
+                    </span>
+      
+
+                        <br />
+                        <input name="FullName" placeholder="Full Name"></input>
+                        <br />
+                        <input name="Email" placeholder="Email Address"></input>
+                        <br />
+                    <span>
+                        All the ratings are anonymous
+                    </span>
+                    <br />
+                        <label class="red">
+                            <input type="radio" name="Rating" id="radio1" class="radio" value="1" />
+                        </label>
+                        <label class="yellow">
+                            <input type="radio" name="Rating" id="radio2" value="2" class="radio" />
+                        </label>
+                        <label class="green">
+                            <input type="radio" name="Rating" id="radio3" value="3" class="radio" checked />
+                        </label>
+
+                        <textarea rows="4" cols="50" name="Comments" placeholder="Any Further Comments"></textarea>
+                        <br />
+                        <div id="schedule-sessions">
+                            <input id="submit-button" class="btn btn-more main-bkg-color" type="submit" title="Submit" />
+                        </div>
+</form>
                 
 
             </div>

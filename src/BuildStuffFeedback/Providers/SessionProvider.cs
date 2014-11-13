@@ -44,8 +44,8 @@ namespace BuildStuffFeedback.Providers
 
         public void AddFeedback(Feedback feedback)
         {
-            var sqlQuery = "INSERT INTO Feedbacks (SessionId, Rating, Comments) " +
-                           "VALUES(@SessionId, @Rating, @Comments);";
+            var sqlQuery = "INSERT INTO Feedbacks (SessionId, Rating, Comments, FullName,Email) " +
+                           "VALUES(@SessionId, @Rating, @Comments, @FullName, @Email);";
 
             using (IDbConnection connection = OpenConnection())
             {

@@ -53,7 +53,7 @@ footer p { margin: 0; }
 /*Hero*/
 
 #hero { background: url('../../images/hero.jpg') no-repeat center top; background-size: cover; color: #121212; height: 724px; }
-#hero h1 { font-size: 62px; line-height: 80px; margin: 180px 0 20px; }
+#hero h1 { font-size: 50px; margin: 90px 0 20px; }
 #hero p { font-size: 28px; margin: 0; }
 #hero a.btn { border-radius: 6px; color: #fff; display: inline-block; font: 22px Montserrat; height: 66px; margin-top: 44px; padding-top: 20px; text-transform: uppercase; width: 254px; }
 
