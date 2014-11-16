@@ -19,13 +19,19 @@
                 <title></title>
                 
                 <style>
-                    body {
-                        font-family: sans-serif;
-                        font-weight: normal;
-                        margin: 10px;
-                        color: #999;
-                        background-color: #eee;
+                    .user {
+                        width: 300px;
+                        height: 30px;
+                        margin: 25px 0px 15px 0px;
                     }
+
+                     body {
+                         font-family: sans-serif;
+                         font-weight: normal;
+                         margin: 10px;
+                         color: #999;
+                         background-color: #eee;
+                     }
 
 
                     .feedback-form {
@@ -75,10 +81,6 @@
                         font-size: 24px;
                         padding: 2px;
                     }
-
-
-                   
-
                 </style>
             </head>
 
@@ -107,18 +109,17 @@
                     </span>
                     <br />
                     <span>
-                        Raffle stars on 21st of November in Alfa hall at 17:00.
+                        Raffle starts on 21st of November in Alfa hall at 17:00.
                     </span>
-
-
-                    <br />
-                    <input name="FullName" placeholder="Full Name"></input>
-                    <br />
-                    <input name="Email" placeholder="Email Address"></input>
                     <br />
                     <span>
                         All the ratings are anonymous
                     </span>
+                    <br/>
+                    <input class="user" name="FullName" placeholder="Full Name"></input>
+                    <br />
+                    <input class="user" name="Email" placeholder="Email Address"></input>
+
                     <br />
                     <label class="red">
                         <input type="radio" name="Rating" id="radio1" class="radio" value="1" />
