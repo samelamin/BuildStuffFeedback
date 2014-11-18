@@ -7,7 +7,6 @@ namespace BuildStuffFeedback.Models.Admin
     {
         public int Id { get; set; }
 
-        public string SessionId { get; set; }
 
         public String Title { get; set; }
 
@@ -17,8 +16,6 @@ namespace BuildStuffFeedback.Models.Admin
     public class SessionDetail
     {
         public int Id { get; set; }
-
-        public string SessionId { get; set; }
 
         public String Title { get; set; }
 
@@ -33,8 +30,8 @@ namespace BuildStuffFeedback.Models.Admin
 
     public enum Level
     {
-        Red,
-        Yellow,
-        Green
+        Red = 1,
+        Yellow =2,
+        Green=3
     }
 }

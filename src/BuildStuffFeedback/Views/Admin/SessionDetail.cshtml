@@ -20,7 +20,7 @@
         </fieldset>
         <fieldset>
             <legend>Bulk Feedback</legend>
-            <form action="~/admin/session/@Model.SessionId/bulk-feedback" method="POST">
+            <form action="~/admin/sessions/@Model.Id/bulk-feedback" method="POST">
                 <div>
                     <label>Count</label>
                     <input type="text" name="count" />
@@ -41,7 +41,7 @@
         </fieldset>
         <fieldset>
             <legend>Feedback with comments</legend>
-            <form action="~/admin/session/@(Model.SessionId)/feedback" method="POST">
+            <form action="~/admin/sessions/@(Model.Id)/feedback" method="POST">
                 <div>
                     <label>Comments</label>
                     <textarea name="comments"></textarea>

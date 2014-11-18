@@ -48,19 +48,18 @@ namespace BuildStuffFeedback.Modules
                         {
                             var session = _provider.GetSession(id);
                             var feedback = _provider.GetSessionFeedbackSummary(id).ToList();
-                            var ratings = feedback.ToLookup(x => x.Rating, x => new {x.Rating});
                             return new SessionDetail
                             {
                                 Id = session.Id,
                                 Speaker = session.Speaker,
                                 Title = session.Title,
                                 Email = session.Email,
-                                Greens = ratings[(int) Level.Green].Count(),
-                                Yellows = ratings[(int) Level.Yellow].Count(),
-                                Reds = ratings[(int) Level.Red].Count(),
+                                Greens = feedback.Where(x=>x.Rating == (int)Level.Green).Count(),
+                                Yellows = feedback.Where(x => x.Rating == (int)Level.Yellow).Count(),
+                                Reds = feedback.Where(x => x.Rating == (int)Level.Red).Count(),
                                 Comments = (from f in feedback
                                             where false == String.IsNullOrWhiteSpace(f.Comments) 
-                                            select f.Comments).ToList()
+                                            select string.Format("{0} {1}",f.Comments,f.Email)).ToList()
                             };
                         }));
                 }
@@ -73,18 +72,18 @@ namespace BuildStuffFeedback.Modules
             this.RequiresAuthentication();
 
             Get["/sessions"] = _ => Negotiate.WithModel(new AdminSessionsViewModel(getAllSessions()));
-            Get["/session/{id}"] = p => Negotiate.WithModel(getSessionDetail((string)p.Id));
-            Post["/session/{id}/bulk-feedback", runAsync: true] = async (p, token) =>
+            Get["/sessions/{id}"] = p => Negotiate.WithModel(getSessionDetail((string)p.Id));
+            Post["/sessions/{id}/bulk-feedback", runAsync: true] = async (p, token) =>
             {
                 int sessionId = p.id;
                 Level rating = Enum.Parse(typeof(Level), Request.Form.rating);
                 
                 await provider.AddBulkFeedback(sessionId, rating, Request.Form.count);
 
-                return Response.AsRedirect("~/admin/session/" + sessionId);
+                return Response.AsRedirect("~/admin/sessions/" + sessionId);
             };
 
-            Post["/session/{id}/feedback", runAsync: true] = async (p, token) =>
+            Post["/sessions/{id}/feedback", runAsync: true] = async (p, token) =>
             {
                 int sessionId = p.id;
                 Level rating = Enum.Parse(typeof(Level), Request.Form.rating);
@@ -100,7 +99,7 @@ namespace BuildStuffFeedback.Modules
                     SessionId = sessionId
                 });
 
-                return Response.AsRedirect("~/admin/session/" + sessionId);
+                return Response.AsRedirect("~/admin/sessions/" + sessionId);
             };
         }
     }
