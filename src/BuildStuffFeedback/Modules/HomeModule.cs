@@ -32,6 +32,11 @@ namespace BuildStuffFeedback.Modules
                 return View["ThankYou.cshtml"];
             };
 
+            Get["/AlreadyVoted"] = parameters =>
+            {
+                return View["AlreadyVoted.cshtml"];
+            };
+
             Get["/sessions/{id}"] = parameter =>
             {
                 var session = _sessionProvider.GetSession(parameter.id);
@@ -45,7 +50,9 @@ namespace BuildStuffFeedback.Modules
             Post["/sessions/AddFeedback"] = parameter =>
             {
                 var feedback = this.Bind<Feedback>();
-                _sessionProvider.AddFeedback(feedback);
+                var addFeedbackResult = _sessionProvider.AddFeedback(feedback);
+                if (addFeedbackResult is FeedbackAlreadyExisted)
+                    return Response.AsRedirect("/alreadyVoted");
                 return Response.AsRedirect("/thankyou");
             };
 
