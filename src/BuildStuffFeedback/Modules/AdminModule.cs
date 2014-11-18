@@ -59,7 +59,7 @@ namespace BuildStuffFeedback.Modules
                                 Reds = feedback.Where(x => x.Rating == (int)Level.Red).Count(),
                                 Comments = (from f in feedback
                                             where false == String.IsNullOrWhiteSpace(f.Comments) 
-                                            select string.Format("{0} {1}",f.Comments,f.Email)).ToList()
+                                            select string.Format("{0} - {1} - {2}",f.Comments,f.FullName,f.Email)).ToList()
                             };
                         }));
                 }

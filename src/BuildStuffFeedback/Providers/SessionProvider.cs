@@ -36,7 +36,7 @@ namespace BuildStuffFeedback.Providers
         {
             using (IDbConnection connection = OpenConnection())
             {
-                return connection.Query<Feedback>("SELECT Rating, Comments FROM Feedbacks WHERE SessionId = @SessionId",
+                return connection.Query<Feedback>("SELECT FullName,Email,Rating, Comments FROM Feedbacks WHERE SessionId = @SessionId",
                     new { SessionId = id });
             }
             
