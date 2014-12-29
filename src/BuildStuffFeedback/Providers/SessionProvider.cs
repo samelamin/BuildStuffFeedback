@@ -42,14 +42,21 @@ namespace BuildStuffFeedback.Providers
             
         }
 
-        public void AddFeedback(Feedback feedback)
+        public AddFeedbackResult AddFeedback(Feedback feedback)
         {
             var sqlQuery = "INSERT INTO Feedbacks (SessionId, Rating, Comments, FullName,Email) " +
                            "VALUES(@SessionId, @Rating, @Comments, @FullName, @Email);";
 
+            var sessionExistsQuery =
+                "SELECT Count(*) FROM Feedbacks WHERE SessionId = @SessionId AND Email = @Email";
+
             using (IDbConnection connection = OpenConnection())
             {
+                if (connection.Query<int>(sessionExistsQuery, feedback).First() > 0)
+                    return new FeedbackAlreadyExisted();
+
                connection.Execute(sqlQuery, feedback);
+                return new FeedbackAdded();
             }
         }
 
@@ -89,6 +96,6 @@ namespace BuildStuffFeedback.Providers
     {
         IEnumerable<Session> GetAllSessions();
         Session GetSession(string Id);
-        void AddFeedback(Feedback feedback);
+        AddFeedbackResult AddFeedback(Feedback feedback);
     }
 }
